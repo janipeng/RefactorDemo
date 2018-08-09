@@ -1,11 +1,11 @@
 package extract_subclass;
 
 public class LaborItem extends JobItem {
-    public LaborItem(int unitPrice, int quantity, Employee employee, boolean isLabor) {
+    public LaborItem(int unitPrice, int quantity, Employee employee) {
         super(unitPrice, quantity, employee);
     }
 
-    public boolean isLabor() {
-        return true;
+    protected int getUnitPrice() {
+        return employee.getRate();
     }
 }

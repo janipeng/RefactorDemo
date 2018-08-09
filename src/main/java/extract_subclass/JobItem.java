@@ -19,11 +19,8 @@ public class JobItem {
         return getUnitPrice() * quantity;
     }
 
-    private int getUnitPrice() {
-        return isLabor() ? employee.getRate() : unitPrice;
+    protected int getUnitPrice() {
+        return unitPrice;
     }
 
-    public boolean isLabor() {
-        return false;
-    }
 }
