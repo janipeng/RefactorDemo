@@ -5,14 +5,14 @@ import java.util.Enumeration;
 public abstract class Statement {
     String value(Customer customer) {
         Enumeration rentals = customer.getRentals().elements();
-        String result = headerString(customer);
+        StringBuilder result = new StringBuilder(headerString(customer));
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            result += eachRentalString(each);
+            result.append(eachRentalString(each));
         }
 
-        result += footerString(customer);   
-        return result;
+        result.append(footerString(customer));
+        return result.toString();
     }
 
     protected abstract String footerString(Customer customer);
