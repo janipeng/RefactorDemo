@@ -3,7 +3,7 @@ package extract_subclass;
 public class JobItem {
     private int unitPrice;
     private int quantity;
-    private Employee employee;
+    protected Employee employee;
     private boolean isLabor;
 
     protected JobItem(int unitPrice, int quantity, Employee employee, boolean isLabor) {
@@ -24,9 +24,5 @@ public class JobItem {
 
     private int getUnitPrice() {
         return isLabor ? employee.getRate() : unitPrice;
-    }
-
-    public Employee getEmployee() {
-        return employee;
     }
 }
