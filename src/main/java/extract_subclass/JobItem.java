@@ -6,10 +6,9 @@ public class JobItem {
     protected Employee employee;
     private boolean isLabor;
 
-    protected JobItem(int unitPrice, int quantity, Employee employee, boolean isLabor) {
+    protected JobItem(int unitPrice, int quantity, boolean isLabor) {
         this.unitPrice = unitPrice;
         this.quantity = quantity;
-        this.employee = employee;
         this.isLabor = isLabor;
     }
 
