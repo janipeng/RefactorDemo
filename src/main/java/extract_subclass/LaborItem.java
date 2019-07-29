@@ -1,8 +1,11 @@
 package extract_subclass;
 
 public class LaborItem extends JobItem {
+
+    private Employee employee;
+
     public LaborItem(int quantity, Employee employee) {
-        super(0, quantity);
+        super(quantity);
         this.employee = employee;
     }
 
