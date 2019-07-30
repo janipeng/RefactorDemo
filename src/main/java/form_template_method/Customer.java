@@ -19,23 +19,12 @@ public class Customer {
         return name;
     }
 
-    public String statement() {
-        return xxxStatement(this);
+    public Vector getRentals() {
+        return rentals;
     }
 
-    public static String xxxStatement(Customer customer) {
-        Enumeration rentals = customer.rentals.elements();
-        String result = "Rental Record for " + customer.getName() + "\n";
-        while (rentals.hasMoreElements()) {
-            Rental each = (Rental) rentals.nextElement();
-            //show figures for this rental
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
-        }
-
-        //add footer lines
-        result += "Amount owed is " + String.valueOf(customer.getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(customer.getTotalFrequentRenterPoints()) + " frequent renter points";
-        return result;
+    public String statement() {
+        return StatementText.value(this);
     }
 
     public String htmlStatement() {
