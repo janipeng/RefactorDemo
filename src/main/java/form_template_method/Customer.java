@@ -20,8 +20,12 @@ public class Customer {
     }
 
     public String statement() {
-        Enumeration rentals = this.rentals.elements();
-        String result = "Rental Record for " + getName() + "\n";
+        return xxxStatement(this);
+    }
+
+    public static String xxxStatement(Customer customer) {
+        Enumeration rentals = customer.rentals.elements();
+        String result = "Rental Record for " + customer.getName() + "\n";
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
             //show figures for this rental
@@ -29,8 +33,8 @@ public class Customer {
         }
 
         //add footer lines
-        result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
-        result += "You earned " + String.valueOf(getTotalFrequentRenterPoints()) + " frequent renter points";
+        result += "Amount owed is " + String.valueOf(customer.getTotalCharge()) + "\n";
+        result += "You earned " + String.valueOf(customer.getTotalFrequentRenterPoints()) + " frequent renter points";
         return result;
     }
 
