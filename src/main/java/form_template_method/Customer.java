@@ -24,11 +24,11 @@ public class Customer {
     }
 
     public String statement() {
-        return StatementText.value(this);
+        return new StatementText().value(this);
     }
 
     public String htmlStatement() {
-        return StatementHtml.value(this);
+        return new StatementHtml().value(this);
     }
 
     double getTotalCharge() {
