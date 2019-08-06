@@ -1,30 +1,33 @@
 package remove_switch;
 
 public class Employee {
-    static final int ENGINEER = 0;
-    static final int SALESMAN = 1;
-    static final int MANAGER = 2;
-    private int type;
+    private static final int ENGINEER = 0;
+    private static final int SALESMAN = 1;
+    private static final int MANAGER = 2;
+    private EmployeeType employeeType;
     private int monthlySalary;
     private int commission;
     private int bonus;
 
     public Employee(int type) {
-        this.type = type;
+        this.employeeType = createEmployeeType(type);
+    }
+
+    public EmployeeType createEmployeeType(int type) {
+        switch (type) {
+            case ENGINEER:
+                return new Engineer();
+            case SALESMAN:
+                return new Salesman();
+            case MANAGER:
+                return new Manager();
+            default:
+                throw new RuntimeException("Incorrect employee");
+        }
     }
 
     int payAmount() {
-        switch (type) {
-            case ENGINEER:
-                return monthlySalary;
-            case SALESMAN:
-                return monthlySalary + commission;
-            case MANAGER:
-                return monthlySalary + bonus;
-            default:
-                throw new RuntimeException("Incorrect employee");
-
-        }
+        return this.employeeType.payAmount(this);
     }
 
     public void setMonthlySalary(int monthlySalary) {
@@ -37,5 +40,17 @@ public class Employee {
 
     public void setBonus(int bonus) {
         this.bonus = bonus;
+    }
+
+    public int getMonthlySalary() {
+        return monthlySalary;
+    }
+
+    public int getCommission() {
+        return commission;
+    }
+
+    public int getBonus() {
+        return bonus;
     }
 }
